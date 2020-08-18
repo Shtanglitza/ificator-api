@@ -6,7 +6,7 @@
 
 (def db {:dbtype "postgresql"
          :dbname "ificator"
-         :host "localhost"
+         :host "172.17.0.2"
          :port "5432"
          :user "postgres"
          :password "postgres"})
@@ -80,11 +80,10 @@
              {:result-set-fn first}))
 
 (defn insert-session
-  [user-id session-key user-agent ip-address expires-in anti-forgery-token]
+  [user-id user-agent ip-address expires-in anti-forgery-token]
   (sql/insert! db
                :sessions
                {:user_id user-id
-                :session_key session-key
                 :user_agent user-agent
                 :ip_address ip-address
                 :expires_at (time-coerce/to-timestamp (clj-time/plus (clj-time/now) (clj-time/minutes expires-in)))

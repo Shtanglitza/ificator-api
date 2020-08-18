@@ -66,7 +66,7 @@
                 user-id (:id user-db)
                 user-agent (get (:headers request) "user-agent")
                 ip-address (:remote-addr request)]
-            (db/insert-session user-id token user-agent ip-address 1440 token)
+            (db/insert-session user-id user-agent ip-address 1440 token)
             (ok {:token token}))
           (unauthorized {:message "Unauthorized"}))))))
 
@@ -86,8 +86,8 @@
                         bbox (:bbox query-params)
                         classes '("rel[building]" "way[building]" "node[building]")
                         data (osm->ifc-flat/create-data "https://www.overpass-api.de/api/" 60 bbox classes crs)]
-                    (assoc ctx :response
-                               (ok data)))
+                    (assoc ctx :response (:header {:content-type "application/STEP;charset=utf-8"}))
+                    (assoc ctx :response (ok data)))
                   (assoc ctx :response (unauthorized {:message "Unauthorized"}))))})))
 
 (def add-user

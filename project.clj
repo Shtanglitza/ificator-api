@@ -1,4 +1,4 @@
-(defproject pedestal-api-ificator "0.0.1"
+(defproject ificator-api "0.0.1"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
@@ -36,10 +36,13 @@
   :profiles {:uberjar {:aot [ificator-api.server]}}
   :main ^{:skip-aot true} ificator-api.server
   :plugins [[s3-wagon-private "1.3.4"]
-            [reifyhealth/lein-git-down "0.3.7"]]
+            [reifyhealth/lein-git-down "0.3.7"]
+            [camechis/deploy-uberjar "0.3.0"]]
   :repositories [["public-github" {:url "git://github.com/"}]
                  ["shtanglitza" {:url "s3p://shtanglitza/clojure"
                                  :username :env/AWS_ACCESS_KEY_ID
                                  :passphrase :env/AWS_SECRET_ACCESS_KEY}]]
   :middleware [lein-git-down.plugin/inject-properties]
-  :git-down {pedestal-api {:coordinates shtanglitza/pedestal-api}})
+  :git-down {pedestal-api {:coordinates shtanglitza/pedestal-api}}
+  :uberjar-name "ificator-api.jar"
+  :target-path "target")
