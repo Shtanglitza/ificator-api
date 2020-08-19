@@ -1,0 +1,6 @@
+17:44:09.896 [main] WARN  clj-antlr.common  - multi-hinted-let is deprecated and will be removed in a future clj-antlr release. Migrate to char-stream functionality.
+17:44:12.538 [main] INFO  org.eclipse.jetty.util.log  - Logging initialized @15204ms to org.eclipse.jetty.util.log.Slf4jLog
+17:44:12.651 [main] INFO  org.eclipse.jetty.server.Server  - jetty-9.4.z-SNAPSHOT; built: 2019-04-29T20:42:08.989Z; git: e1bc35120a6617ee3df052294e433f3a25ce7097; jvm 11.0.8+10-post-Ubuntu-0ubuntu120.04
+17:44:12.673 [main] INFO  o.e.j.server.handler.ContextHandler  - Started o.e.j.s.ServletContextHandler@40cf08b0{/,null,AVAILABLE}
+17:44:12.702 [main] INFO  o.e.jetty.server.AbstractConnector  - Started ServerConnector@3e667a7{HTTP/1.1,[http/1.1, h2c]}{0.0.0.0:5000}
+17:44:12.702 [main] INFO  org.eclipse.jetty.server.Server  - Started @15369ms
