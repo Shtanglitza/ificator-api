@@ -23,4 +23,6 @@
         shtanglitza/osm-ifc {:git/url "https://github.com/Shtanglitza/osm-ifc"
                              :sha "48827b0197dbb7664a7389b5b0436fbb66d3e081"}
         shtanglitza/pedestal-api {:git/url "https://github.com/Shtanglitza/pedestal-api"
-                                  :sha "10f2b886ef9b62b8a7087da4f7705511eeea6fe0"}}}
+                                  :sha "10f2b886ef9b62b8a7087da4f7705511eeea6fe0"}}
+ :aliases {:uberdeps {:extra-deps {uberdeps/uberdeps {:mvn/version "1.0.2"}}
+                      :main-opts ["-m" "uberdeps.uberjar"]}}}

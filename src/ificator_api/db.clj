@@ -6,10 +6,10 @@
 
 (def db {:dbtype "postgresql"
          :dbname "ificator"
-         :host "172.17.0.2"
+         :host "127.0.0.1"
          :port "5432"
-         :user "postgres"
-         :password "postgres"})
+         :user (System/getenv "osmifcdbuser")
+         :password (System/getenv "osmifcdbpassword")})
 
 (defn insert-user!
   [email password-hash]
