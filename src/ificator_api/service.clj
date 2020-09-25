@@ -85,9 +85,12 @@
                         crs (:crs query-params)
                         bbox (:bbox query-params)
                         classes '("rel[building]" "way[building]" "node[building]")
-                        data (osm->ifc-flat/create-data "https://www.overpass-api.de/api/" 60 bbox classes crs)]
-                    (assoc ctx :response (:header {:content-type "application/STEP;charset=utf-8"}))
-                    (assoc ctx :response (ok data)))
+                        data (if (and (< (Math/abs (- (first bbox) (nth bbox 2))) 0.004) (< (Math/abs (- (nth bbox 1) (nth bbox 3))) 0.004))
+                               (osm->ifc-flat/create-data "https://www.overpass-api.de/api/" 60 bbox classes crs)
+                               false)]
+                    (if data
+                      (assoc ctx :response (ok data))
+                      (assoc ctx :response (bad-request {:message "Maximum difference of lat and lon parameters can be 0.004"}))))
                   (assoc ctx :response (unauthorized {:message "Unauthorized"}))))})))
 
 (def add-user

@@ -2,7 +2,9 @@
   (:require [clojure.java.jdbc :as sql]
             [clojure.string :as str]
             [clj-time.coerce :as time-coerce]
-            [clj-time.core :as clj-time]))
+            [clj-time.core :as clj-time]
+            [ragtime.jdbc :as jdbc])
+  (:import [clojure.lang RT]))
 
 (def db {:dbtype "postgresql"
          :dbname "ificator"
@@ -10,6 +12,15 @@
          :port "5432"
          :user (System/getenv "osmifcdbuser")
          :password (System/getenv "osmifcdbpassword")})
+
+(def sql-backup (slurp (.getResourceAsStream
+                         (RT/baseLoader)
+                         "ificator.sql")))
+
+(defn generate-db
+  [sql db]
+  (sql/query db
+                sql))
 
 (defn insert-user!
   [email password-hash]

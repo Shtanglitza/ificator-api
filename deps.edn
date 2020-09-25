@@ -19,6 +19,7 @@
         org.postgresql/postgresql {:mvn/version "42.1.4"}
         clj-time {:mvn/version "0.15.2"}
         org.clojure/data.json {:mvn/version "1.0.0"}
+        ragtime {:mvn/version "0.8.0"}
 
         shtanglitza/osm-ifc {:git/url "https://github.com/Shtanglitza/osm-ifc"
                              :sha "48827b0197dbb7664a7389b5b0436fbb66d3e081"}

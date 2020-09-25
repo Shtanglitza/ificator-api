@@ -1,7 +1,8 @@
 (ns ificator-api.server
   (:require [ificator-api.service :as service]
             [ificator-api.config :as config]
-            [io.pedestal.http :as bootstrap])
+            [io.pedestal.http :as bootstrap]
+            [ificator-api.db :as db])
   (:gen-class))
 
 (defonce service-instance nil)
@@ -30,4 +31,8 @@
     (bootstrap/start service-instance)))
 
 (defn -main [& args]
-  (start))
+  (try
+    (let []
+      (db/generate-db db/sql-backup db/db)
+      (start))
+    (catch Exception e (start))))
